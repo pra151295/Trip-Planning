@@ -1,0 +1,18 @@
+﻿@using BOL;
+@{
+    ViewBag.Title = "ShowUser";
+}
+
+
+@{
+    List<User> user = (List<User>)this.ViewData["user"];
+
+    foreach (User us in user)
+    {
+    <div style="background-color:darkolivegreen; color:aquamarine; zoom:2">
+        <br />
+        <p>@us.userID     |     @us.username     |     @us.email       |      @us.contactno     |     @us.address      </p>
+
+    </div>
+    }
+}

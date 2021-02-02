@@ -1,0 +1,103 @@
+﻿@using BOL;
+@{
+    ViewBag.Title = "Index";
+    List<Routes> routes = Model as List<Routes>;
+    List<Petrol_Pump> petrol = (List<Petrol_Pump>)this.ViewData["petrol"];
+    List<Hotel> hotel = (List<Hotel>)this.ViewData["hotel"];
+
+}
+
+    <head>
+        <title>Farmple-E Market Yard</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--enable mobile device-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--fontawesome css-->
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <!--bootstrap css-->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!--animate css-->
+        <link rel="stylesheet" href="css/animate-wow.css">
+        <!--main css-->
+        <link rel="stylesheet" href="~/Content/css/style.css">
+        <link rel="stylesheet" href="css/bootstrap-select.min.css">
+        <link rel="stylesheet" href="css/slick.min.css">
+        <!--responsive css-->
+        <link rel="stylesheet" href="css/responsive.css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        @*    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        *@
+    </head>
+    <body>
+        <br /><br /><br />
+        <h2>Well, looks like there is already planning started in your head. Now, let us help you with the same. <br />
+        As you have selected this route here are some options which will be suitable for your journey. We have given below the list 
+        of hotels for stay, Restaurants for food and Fuel Stations.</h2>
+
+        @{
+
+            foreach (Routes rou in routes)
+            {
+
+                <div class="col-lg-3 col-sm-3 col-md-1" style="margin-top:20px; margin-bottom:20px">
+                    <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d945.1010159981831!2d73.75735948053696!3d18.645855488527204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9f04729dbef%3A0xe34756e38e08fe1f!2sDr%20D%20Y%20Patil%20Institute%20of%20Management%20Studies%20(DYPIMS)!5e0!3m2!1sen!2sin!4v1608408219201!5m2!1sen!2sin">
+
+                        <div class="box-img">
+
+                            <img src="@rou.image"
+                                 alt="" />
+                            <div style="color:cornsilk">@rou.rest_name</div>
+                            <div style="color:cornsilk">@rou.address</div>
+
+                        </div>
+                    </a>
+                    @* <h3>you selected  @rou.from_city to @rou.to_city</h3>*@
+                </div>
+
+
+            }
+        }
+
+        <h2 style="color:darkblue" ;>Petrol Pump</h2>
+        @foreach (Petrol_Pump pet in petrol)
+        {
+
+            <div class="col-lg-3 col-sm-3 col-md-1" style="margin-top:20px; margin-bottom:20px">
+                <a href="@pet.location">
+
+                    <div class="box-img">
+
+                        <img src="~/Images/petrol.jpg"
+                             alt="" />
+                        <div style="color:cornsilk">@pet.pump_name</div>
+
+                    </div>
+                </a>
+                @* <h3>you selected  @rou.from_city to @rou.to_city</h3>*@
+            </div>
+        }
+
+
+        @*@<h2 style="color:darkblue" ;>Petrol Pump</h2>*@
+        @foreach (Hotel hot in hotel)
+        {
+
+            <div class="col-lg-3 col-sm-3 col-md-1" style="margin-top:20px; margin-bottom:20px">
+                <a href="#">
+
+                    <div class="box-img">
+
+                        <img src="@hot.image"
+                             alt="" />
+                        <div style="color:cornsilk">@hot.hotel_name</div>
+                        <div style="color:cornsilk">@hot.address</div>
+
+                    </div>
+                </a>
+                @* <h3>you selected  @rou.from_city to @rou.to_city</h3>*@
+            </div>
+        }
+    </body>
